@@ -1,0 +1,20 @@
+.main{
+  display: flex;
+}
+
+.left{
+  width: 30%;
+  position: sticky;
+  left: 0;
+  top: 0;
+  height: 100vh;
+}
+
+.right{
+  width: 70%;
+}
+
+
+.highlight{
+  background: rebeccapurple;
+}

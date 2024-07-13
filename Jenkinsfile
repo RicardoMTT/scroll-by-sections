@@ -9,7 +9,7 @@ pipeline {
                 sh 'ls'
                 sh 'npm install'
                 sh 'echo N | ng analytics off'
-                sh 'ng build'
+                sh 'npm run build'
                 sh 'ls'
                 sh 'cd dist && ls'
                 sh 'cd dist/navigation-angular-left && ls'

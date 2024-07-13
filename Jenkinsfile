@@ -7,8 +7,10 @@ pipeline {
       stage('Install AWS CLI') {
             steps {
                 sh '''
-                pip3 install --user awscli
-                export PATH=$PATH:$HOME/.local/bin
+                curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+                unzip awscliv2.zip
+                ./aws/install -i $HOME/aws-cli -b $HOME/bin
+                export PATH=$PATH:$HOME/bin
                 aws --version
                 '''
             }

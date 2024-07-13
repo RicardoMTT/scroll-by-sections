@@ -4,6 +4,17 @@ pipeline {
     tools {nodejs "NodeJS"}
 
     stages {
+      stage('Install AWS CLI') {
+            steps {
+                sh '''
+                sudo apt-get update
+                sudo apt-get install -y python3-pip unzip
+                pip3 install awscli
+                aws --version
+                '''
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'ls'

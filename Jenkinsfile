@@ -8,7 +8,6 @@ pipeline {
             steps {
                 sh 'ls'
                 sh 'npm install'
-                sh 'echo N | ng analytics off'
                 sh 'npm run build'
                 sh 'ls'
                 sh 'cd dist && ls'

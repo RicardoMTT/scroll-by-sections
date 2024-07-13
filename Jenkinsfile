@@ -7,8 +7,9 @@ pipeline {
       stage('Install AWS CLI') {
             steps {
                 sh '''
-                sudo apt-get update
-                sudo apt-get install -y python3-pip unzip
+                apt-get update
+                apt-get install -y python3-pip unzip curl
+                pip3 install --upgrade pip
                 pip3 install awscli
                 aws --version
                 '''

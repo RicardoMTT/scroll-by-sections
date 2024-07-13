@@ -7,10 +7,8 @@ pipeline {
       stage('Install AWS CLI') {
             steps {
                 sh '''
-                apt-get update
-                apt-get install -y python3-pip unzip curl
-                pip3 install --upgrade pip
-                pip3 install awscli
+                pip3 install --user awscli
+                export PATH=$PATH:$HOME/.local/bin
                 aws --version
                 '''
             }

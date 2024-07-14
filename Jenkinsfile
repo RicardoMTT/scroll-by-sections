@@ -3,15 +3,20 @@ pipeline {
 
     tools {nodejs "NodeJS"}
 
+    environment {
+        AWS_CLI_DIR = "$HOME/aws-cli"
+        PATH = "$PATH:$HOME/bin"
+    }
+
     stages {
+
       stage('Install AWS CLI') {
             steps {
                 sh '''
                 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
                 unzip awscliv2.zip
-                ./aws/install -i $HOME/aws-cli -b $HOME/bin
-                export PATH=$PATH:$HOME/bin
-                aws --version
+                 ./aws/install -i $AWS_CLI_DIR -b $HOME/bin
+                $HOME/bin/aws --version
                 '''
             }
         }
@@ -30,7 +35,7 @@ pipeline {
             steps {
                 withAWS(region: 'us-east-1', credentials: '661048e1-9539-43bb-bf28-59c6a889fec6') {
                     sh 'ls -la'
-                    sh 'aws s3 cp dist/navigation-angular-left/. s3://angular-jenkins-test/ --recursive'
+                    sh '$HOME/bin/aws s3 cp dist/navigation-angular-left/. s3://angular-jenkins-test/ --recursive'
                 }
             }
         }

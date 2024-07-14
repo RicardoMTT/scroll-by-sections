@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         AWS_CLI_DIR = "$HOME/aws-cli"
-        PATH = "$PATH:$HOME/bin"
+        PATH = "$HOME/bin:$PATH"
     }
 
     stages {
